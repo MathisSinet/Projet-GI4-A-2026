@@ -1,0 +1,11 @@
+INDEX VERSION 1.134+/data/CYTECHDATA/Documents/Informatique/.metadata/.plugins/org.eclipse.jdt.core
+1003238812.index
+1616138396.index
+1865797976.index
+2975807829.index
+1780603671.index
+4111238396.index
+701024252.index
+2394040226.index
+1795690881.index
+1543671697.index

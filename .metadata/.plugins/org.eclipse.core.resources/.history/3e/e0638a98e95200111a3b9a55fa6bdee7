@@ -1,0 +1,6 @@
+package fr.flowly.geometry;
+
+public class Point {
+    protected double x;
+    protected double y;
+}

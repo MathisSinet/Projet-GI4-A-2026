@@ -1,0 +1,5 @@
+package flowly.viewcontroller;
+
+public class InspectorController {
+
+}
