@@ -1,4 +1,4 @@
-package flowly.geometry;
+package fr.flowly.flowly.geometry;
 
 public class Point {
     protected double x;

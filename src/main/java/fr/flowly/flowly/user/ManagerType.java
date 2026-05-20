@@ -1,4 +1,4 @@
-package flowly.user;
+package fr.flowly.flowly.user;
 
 public enum ManagerType {
     MUNICIPALITY,

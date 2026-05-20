@@ -1,4 +1,4 @@
-package flowly.core;
+package fr.flowly.flowly.core;
 
 import java.io.*;
 

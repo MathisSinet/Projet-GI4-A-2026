@@ -1,4 +1,4 @@
-package flowly.user;
+package fr.flowly.flowly.user;
 
 public abstract class Account {
     protected int id;

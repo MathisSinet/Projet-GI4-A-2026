@@ -1,8 +1,8 @@
-package flowly.viewcontroller;
+package fr.flowly.flowly.viewcontroller;
 
 import javafx.scene.control.TextArea;
-import flowly.geometry.VoronoiCell;
-import flowly.geometry.DelaunayTriangle;
+import fr.flowly.flowly.geometry.VoronoiCell;
+import fr.flowly.flowly.geometry.DelaunayTriangle;
 
 public class InspectorController {
     private TextArea statsTextArea;

@@ -1,9 +1,9 @@
-package flowly.viewcontroller;
+package fr.flowly.flowly.viewcontroller;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import java.util.List;
-import flowly.geometry.*;
+import fr.flowly.flowly.geometry.*;
 
 public class MapView extends Canvas {
     private double zoomFactor;

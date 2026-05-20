@@ -1,9 +1,9 @@
-package flowly.core;
+package fr.flowly.flowly.core;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import flowly.geometry.*;
+import fr.flowly.flowly.geometry.*;
 
 public class MapManager {
     private List<VoronoiSite> sites;

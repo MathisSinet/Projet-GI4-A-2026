@@ -1,4 +1,4 @@
-package flowly.geometry;
+package fr.flowly.flowly.geometry;
 
 public class DelaunayTriangle {
     private VoronoiSite[] vertices = new VoronoiSite[3];

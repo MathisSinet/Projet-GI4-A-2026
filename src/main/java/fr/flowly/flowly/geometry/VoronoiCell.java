@@ -1,4 +1,4 @@
-package flowly.geometry;
+package fr.flowly.flowly.geometry;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package flowly.viewcontroller;
+package fr.flowly.flowly.viewcontroller;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
