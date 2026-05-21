@@ -1,6 +1,8 @@
 package fr.flowly.flowly.geometry;
 
-public class TouristPoint extends Point{
+import javafx.geometry.Point2D;
+
+public class TouristPoint extends Point2D {
 	private int id;
     private VoronoiSite closestSite;
     

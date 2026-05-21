@@ -1,19 +1,20 @@
 package fr.flowly.flowly.geometry;
 
+import javafx.geometry.Point2D;
 import java.util.List;
 
 public class VoronoiCell {
-    private List<Point> cellVertices;
+    private List<Point2D> cellVertices;
 
-    public VoronoiCell(List<Point> vertices) {
+    public VoronoiCell(List<Point2D> vertices) {
         this.cellVertices = vertices;
     }
 
-    public List<Point> getCellVertices() {
+    public List<Point2D> getCellVertices() {
         return cellVertices;
     }
 
-    public void setCellVertices(List<Point> vertices) {
+    public void setCellVertices(List<Point2D> vertices) {
         this.cellVertices = vertices;
     }
     
