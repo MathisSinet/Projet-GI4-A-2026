@@ -21,8 +21,16 @@ public class Point {
         inner = new Point2D(getX(), y);
     }
 
+    public Point add(Point p2) {
+        return new Point(inner.add(p2.inner));
+    }
+
     public Point subtract(Point p2) {
         return new Point(inner.subtract(p2.inner));
+    }
+
+    public Point multiply(double factor) {
+        return new Point(inner.multiply(factor));
     }
 
     public Point midpoint(Point p2) {
