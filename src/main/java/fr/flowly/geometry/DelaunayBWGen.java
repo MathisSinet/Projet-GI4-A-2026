@@ -4,47 +4,45 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.geometry.Point2D;
+public class DelaunayBWGen {
+    List<VoronoiSite> visited;
+    List<DelaunayTriangle> triangles;
+    DelaunayTriangle supertriangle;
 
-public class DelaunayBowyerWatson {
-    List<Point2D> visited;
-    List<Triangle> triangles;
-    Triangle supertriangle;
-
-    public List<Triangle> getTriangles() {
+    public List<DelaunayTriangle> getTriangles() {
         return triangles;
     }
 
-    public Triangle getSupertriangle() {
+    public DelaunayTriangle getSupertriangle() {
         return supertriangle;
     }
 
-    public DelaunayBowyerWatson(Point2D[] points) {
+    public DelaunayBWGen(VoronoiSite[] points) {
         visited = new ArrayList<>();
         triangles = new ArrayList<>();
-        supertriangle = Triangle.supertriangle(points);
+        supertriangle = DelaunayTriangle.supertriangle(points);
         triangles.add(supertriangle);
 
-        for (Point2D point: points) {
+        for (VoronoiSite point: points) {
             visited.add(point);
 
             // ETAPE 1 : Repérage des triangles à supprimer
-            List<Triangle> badTriangles = new ArrayList<>();
-            for (Triangle triangle: triangles) {
+            List<DelaunayTriangle> badTriangles = new ArrayList<>();
+            for (DelaunayTriangle triangle: triangles) {
                 // On vérifie si le nouveau point est dans le cercle circonscrit du triangle
                 if (point.distance(triangle.getCenter()) < triangle.getRadius()) {
                     badTriangles.add(triangle);
                 }
             }
             // ETAPE 2: On détermine le polynôme englobant
-            List<Edge> polygon = new ArrayList<>();
+            List<Edge<VoronoiSite>> polygon = new ArrayList<>();
             // On regarde chaque triangle à supprimer
-            for (Triangle badTriangle: badTriangles) {
+            for (DelaunayTriangle badTriangle: badTriangles) {
                 // On regarde chaque côté
-                for (Edge edge: badTriangle.getEdges()) {
+                for (Edge<VoronoiSite> edge: badTriangle.getEdges()) {
                     boolean toAdd = true;
                     // On regarde si ce côté est partagé par un autre triangle à supprimer
-                    for (Triangle otherBadTriangle: badTriangles) {
+                    for (DelaunayTriangle otherBadTriangle: badTriangles) {
                         if (!badTriangle.equals(otherBadTriangle) && otherBadTriangle.hasEdge(edge)) {
                             toAdd = false;
                             break;
@@ -55,22 +53,22 @@ public class DelaunayBowyerWatson {
                 }
             }
             // ETAPE 3: On supprime les triangles à supprimer
-            Iterator<Triangle> iter = triangles.listIterator();
+            Iterator<DelaunayTriangle> iter = triangles.listIterator();
             while (iter.hasNext()) {
-                Triangle triangle = iter.next();
+                DelaunayTriangle triangle = iter.next();
                 if (badTriangles.contains(triangle)) {
                     iter.remove();
                 }
             }
             // ETAPE 4: On triangule le trou polygonal
-            for (Edge edge: polygon) {
-                triangles.add(new Triangle(point, edge.getV1(), edge.getV2()));
+            for (Edge<VoronoiSite> edge: polygon) {
+                triangles.add(new DelaunayTriangle(point, edge.getV1(), edge.getV2()));
             }
         }
         // Nettoyage
-        Iterator<Triangle> iter = triangles.listIterator();
+        Iterator<DelaunayTriangle> iter = triangles.listIterator();
         while (iter.hasNext()) {
-            Triangle triangle = iter.next();
+            DelaunayTriangle triangle = iter.next();
             if (triangle.shareVertex(supertriangle)) {
                 iter.remove();
             }

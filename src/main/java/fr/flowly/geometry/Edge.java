@@ -1,19 +1,17 @@
 package fr.flowly.geometry;
 
-import javafx.geometry.Point2D;
+public class Edge<T extends Point> {
+    T v1, v2;
 
-public class Edge {
-    Point2D v1, v2;
-
-    public Point2D getV1() {
+    public T getV1() {
         return v1;
     }
 
-    public Point2D getV2() {
+    public T getV2() {
         return v2;
     }
 
-    public Edge(Point2D v1, Point2D v2) {
+    public Edge(T v1, T v2) {
         this.v1 = v1;
         this.v2 = v2;
     }
