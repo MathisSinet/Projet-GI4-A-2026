@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Génère une triangulation de Delaunay
+ */
 public class DelaunayBWGen {
-    List<VoronoiSite> visited;
-    List<DelaunayTriangle> triangles;
-    DelaunayTriangle supertriangle;
+    private List<VoronoiSite> visited;
+    private List<DelaunayTriangle> triangles;
+    private DelaunayTriangle supertriangle;
 
     public List<DelaunayTriangle> getTriangles() {
         return triangles;
@@ -17,6 +20,10 @@ public class DelaunayBWGen {
         return supertriangle;
     }
 
+    /**
+     * Génère une triangulation de Delaunay
+     * @param points sites à trianguler
+     */
     public DelaunayBWGen(VoronoiSite[] points) {
         visited = new ArrayList<>();
         triangles = new ArrayList<>();

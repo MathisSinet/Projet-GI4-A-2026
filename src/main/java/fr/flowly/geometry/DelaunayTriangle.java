@@ -145,21 +145,31 @@ public class DelaunayTriangle {
         }
         return false;
     }
-    
-    // Déplacer sur la classe de base?
-    public void getArea() { //double
-    	
+
+    @Override
+    public int hashCode() {
+        return (p1.hashCode() >> 2) + (p2.hashCode() >> 2) + (p3.hashCode() >> 2);
+    }
+
+    public double getArea() {
+    	return p1.area(p2, p3);
     }
     
-    public void getEdgeLengths() { //double[]
-    	
+    public double[] getEdgeLengths() {
+    	return new double[] {
+            p1.distance(p2),
+            p2.distance(p3),
+            p3.distance(p1)
+        };
     }
     
-    public void getTouristCount() { //int
-    	
+    public int getTouristCount() {
+    	// TODO: implementation getTouristCount
+        return 0;
     }
     
-    public void getPopulationImbalance() { //double
-    	
+    public double getPopulationImbalance() {
+    	// TODO: implementation getTouristImbalance
+        return 0.0;
     }
 }

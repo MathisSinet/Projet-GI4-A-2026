@@ -66,6 +66,7 @@ public class VoronoiGenerator {
         }
 
         // Cas 2 : solution temporaire !
+        // TODO implémenter une meilleure solution
         else {
             DelaunayTriangle firstTriangle = triangleMap.get(start);
             Point firstMP = point.midpoint(start);

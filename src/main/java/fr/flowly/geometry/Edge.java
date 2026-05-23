@@ -11,6 +11,13 @@ public class Edge<T extends Point> {
         return v2;
     }
 
+    /**
+     * @return la longueur du segment
+     */
+    public double length() {
+        return v1.distance(v2);
+    }
+
     public Edge(T v1, T v2) {
         this.v1 = v1;
         this.v2 = v2;

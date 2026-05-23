@@ -3,9 +3,11 @@ package fr.flowly.geometry;
 import java.util.List;
 
 public class VoronoiCell {
+    private Point center;
     private List<Point> cellVertices;
 
-    public VoronoiCell(List<Point> vertices) {
+    public VoronoiCell(Point center, List<Point> vertices) {
+        this.center = center;
         this.cellVertices = vertices;
     }
 
@@ -17,19 +19,23 @@ public class VoronoiCell {
         this.cellVertices = vertices;
     }
     
-    public void getArea() { //double
-    	
+    public double getArea() { 
+    	// TODO: implementation getArea
+        return 0;
     }
     
-    public void getTouristCount(List<TouristPoint> allTourists) { //int
-    	
+    public int getTouristCount(List<TouristPoint> allTourists) { //int
+    	// TODO: implementation getTouristCount
+        return 0;
     }
     
-    public void getDensity(List<TouristPoint> allTourists) { //double
-    	
+    public double getDensity(List<TouristPoint> allTourists) {
+    	// TODO: implementation getDensity
+        return 0;
     }
     
-    public void getDistanceMetrics(List<TouristPoint> allTourists) { //double
-    	
+    public double getDistanceMetrics(List<TouristPoint> allTourists) {
+    	// TODO: implementation getDistanceMetrics
+        return 0;
     }
 }

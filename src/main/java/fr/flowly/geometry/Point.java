@@ -49,6 +49,14 @@ public class Point {
         return inner.distance(p2.inner);
     }
 
+    public double area(Point p2, Point p3) {
+        return 0.5 * Math.abs(
+            this.getX() * (p2.getY() - p3.getY()) +
+            p2.getX() * (p3.getY() - this.getY()) +
+            p3.getX() * (this.getY() - p2.getY())
+        );
+    }
+
     private Point(Point2D point) {
         inner = point;
     }
