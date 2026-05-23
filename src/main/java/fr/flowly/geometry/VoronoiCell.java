@@ -5,6 +5,7 @@ import java.util.List;
 public class VoronoiCell {
     private Point center;
     private List<Point> cellVertices;
+    private Double areaCache = null;
 
     public VoronoiCell(Point center, List<Point> vertices) {
         this.center = center;
@@ -17,11 +18,35 @@ public class VoronoiCell {
 
     public void setCellVertices(List<Point> vertices) {
         this.cellVertices = vertices;
+        invalidateArea();
+    }
+
+    /**
+     * Calcule l'aire de la cellule
+     * @return l'aire de la cellule
+     */
+    private double calculateArea() {
+        int vertexCount = getCellVertices().size();
+        double area = 0;
+    	for (int i = 0; i < vertexCount; i++) {
+            area += center.area(getCellVertices().get(i), getCellVertices().get((i+1) % vertexCount));
+        }
+        return area;
     }
     
+    /**
+     * Renvoie l'aire de la cellule
+     * @return l'aire de la cellule
+     */
     public double getArea() { 
-    	// TODO: implementation getArea
-        return 0;
+        if (areaCache == null) {
+            areaCache = calculateArea();
+        }
+        return areaCache;
+    }
+
+    private void invalidateArea() {
+        areaCache = null;
     }
     
     public int getTouristCount(List<TouristPoint> allTourists) { //int
@@ -30,8 +55,7 @@ public class VoronoiCell {
     }
     
     public double getDensity(List<TouristPoint> allTourists) {
-    	// TODO: implementation getDensity
-        return 0;
+    	return getTouristCount(allTourists) / getArea();
     }
     
     public double getDistanceMetrics(List<TouristPoint> allTourists) {

@@ -45,10 +45,21 @@ public class Point {
         return inner.angle(p2.inner, p3.inner);
     }
 
+    /**
+     * Renvoie la distance entre deux points
+     * @param p2 second point
+     * @return distance entre les points
+     */
     public double distance(Point p2) {
         return inner.distance(p2.inner);
     }
 
+    /**
+     * Renvoie l'aire du triangle formé par trois points
+     * @param p2 deuxième sommet
+     * @param p3 troisième sommet
+     * @return l'aire du triangle
+     */
     public double area(Point p2, Point p3) {
         return 0.5 * Math.abs(
             this.getX() * (p2.getY() - p3.getY()) +

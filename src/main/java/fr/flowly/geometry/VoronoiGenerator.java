@@ -10,12 +10,12 @@ import javafx.geometry.Point2D;
 
 public class VoronoiGenerator {
     List<VoronoiSite> points;
-    HashMap<VoronoiSite, ArrayList<DelaunayTriangle>> sortedTriangles;
-    HashMap<VoronoiSite, ArrayList<Edge<Point>>> polygons;
+    HashMap<VoronoiSite, ArrayList<DelaunayTriangle>> classifiedTriangles;
+    HashMap<VoronoiSite, ArrayList<Point>> polygons;
     Point2D corner;
     Point2D size;
 
-    public HashMap<VoronoiSite, ArrayList<Edge<Point>>> getPolygons() {
+    public HashMap<VoronoiSite, ArrayList<Point>> getPolygons() {
         return polygons;
     }
 
@@ -25,7 +25,7 @@ public class VoronoiGenerator {
      * @param triangles Triangles adjacents à ce sommet
      * @return
      */
-    private ArrayList<Edge<Point>> voronoiPolygon(VoronoiSite point, ArrayList<DelaunayTriangle> triangles) {
+    private ArrayList<Point> voronoiPolygon(VoronoiSite point, ArrayList<DelaunayTriangle> triangles) {
         int triangleCount = triangles.size();
         if (triangleCount == 0) return new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class VoronoiGenerator {
         }
         
         // On crée maintenant le polygone
-        ArrayList<Edge<Point>> edges = new ArrayList<>();
+        ArrayList<Point> polygon = new ArrayList<>();
         // Cas 1 : cycle
         if (start == null) {
             start = triangles.getFirst().nextVertex(point);
@@ -59,7 +59,7 @@ public class VoronoiGenerator {
                 DelaunayTriangle t1 = triangleMap.get(currentPoint);
                 VoronoiSite nextPoint = t1.nextVertex(currentPoint);
                 DelaunayTriangle t2 = triangleMap.get(nextPoint);
-                edges.add(new Edge<>(t1.getCenter(), t2.getCenter()));
+                polygon.add(t1.getCenter());
                 currentPoint = nextPoint;
             }
             while (currentPoint != start);
@@ -68,12 +68,13 @@ public class VoronoiGenerator {
         // Cas 2 : solution temporaire !
         // TODO implémenter une meilleure solution
         else {
-            DelaunayTriangle firstTriangle = triangleMap.get(start);
+            // On génère un point très éloigné sur la médiatrice du premier segment reliant
+            // le centre de la cellule au premier point de la chaine
             Point firstMP = point.midpoint(start);
             Point vec = start.subtract(point);
             Point normal = new Point(vec.getY(), -vec.getX());
             Point farPoint = firstMP.add(normal.multiply(2000)); // Solution temporaire !!!
-            edges.add(new Edge<>(farPoint, firstTriangle.getCenter()));
+            polygon.add(farPoint);
 
             VoronoiSite currentPoint = start;
             while (true) {
@@ -81,12 +82,14 @@ public class VoronoiGenerator {
                 VoronoiSite nextPoint = t1.nextVertex(currentPoint);
                 DelaunayTriangle t2 = triangleMap.get(nextPoint);
                 if (t2 == null) break;
-                edges.add(new Edge<>(t1.getCenter(), t2.getCenter()));
+                polygon.add(t1.getCenter()); // t1->t2
                 currentPoint = nextPoint;
             }
+
+            // TODO: fermer le polygone
         }
 
-        return edges;
+        return polygon;
     }
 
     public VoronoiGenerator(VoronoiSite[] points, List<DelaunayTriangle> triangles, Point2D corner, Point2D size) {
@@ -95,20 +98,20 @@ public class VoronoiGenerator {
         this.size = size;
 
         // Création de listes vides pour les triangles adjacents à chaque point
-        sortedTriangles = new HashMap<>();
+        classifiedTriangles = new HashMap<>();
         polygons = new HashMap<>();
         for (VoronoiSite point: points) {
-            sortedTriangles.put(point, new ArrayList<>());
+            classifiedTriangles.put(point, new ArrayList<>());
         }
         // Classement des triangles dans les tableaux de chaque points
         for (DelaunayTriangle triangle: triangles) {
-            sortedTriangles.get(triangle.getP1()).add(triangle);
-            sortedTriangles.get(triangle.getP2()).add(triangle);
-            sortedTriangles.get(triangle.getP3()).add(triangle);
+            classifiedTriangles.get(triangle.getP1()).add(triangle);
+            classifiedTriangles.get(triangle.getP2()).add(triangle);
+            classifiedTriangles.get(triangle.getP3()).add(triangle);
         }
         // Génération des polygones de Voronoï
         for (VoronoiSite point: points) {
-            polygons.put(point, voronoiPolygon(point, sortedTriangles.get(point)));
+            polygons.put(point, voronoiPolygon(point, classifiedTriangles.get(point)));
         }
     }
 }
