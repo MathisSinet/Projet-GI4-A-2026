@@ -21,14 +21,13 @@ public class MapManager {
     }
 
     public void associateTouristsToSites() {
-    	
         for (TouristPoint t : tourists) {
             VoronoiSite closest = null;
             double minDistance = Double.MAX_VALUE;
             
             for (VoronoiSite s : sites) {
 
-                double dist = Math.pow(t.getX() - s.getX(), 2) + Math.pow(t.getY() - s.getY(), 2);
+                double dist = t.distance(s);
                 if (dist < minDistance) {
                     minDistance = dist;
                     closest = s;
