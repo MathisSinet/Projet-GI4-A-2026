@@ -1,12 +1,16 @@
 package fr.flowly.geometry;
 
-import javafx.geometry.Point2D;
-
 /**
  * Représente la position d'un touriste
  */
-public class TouristPoint extends Point2D {
+public class TouristPoint extends Point {
+    /**
+     * Identifiant du touriste
+     */
 	private int id;
+    /**
+     * Site de Voronoi le plus proche
+     */
     private VoronoiSite closestSite;
     
     public TouristPoint(int id, double x, double y) {

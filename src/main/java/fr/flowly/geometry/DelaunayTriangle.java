@@ -3,6 +3,9 @@ package fr.flowly.geometry;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Classe représentant un triangle de Delaunay
+ */
 public class DelaunayTriangle {
     private final VoronoiSite p1, p2, p3;
     /**
@@ -161,15 +164,5 @@ public class DelaunayTriangle {
             p2.distance(p3),
             p3.distance(p1)
         };
-    }
-    
-    public int getTouristCount() {
-    	// TODO: implementation getTouristCount
-        return 0;
-    }
-    
-    public double getPopulationImbalance() {
-    	// TODO: implementation getTouristImbalance
-        return 0.0;
     }
 }

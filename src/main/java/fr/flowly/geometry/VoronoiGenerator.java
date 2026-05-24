@@ -8,12 +8,31 @@ import java.util.HashMap;
 
 import javafx.geometry.Point2D;
 
+/**
+ * Classe technique utilisée pour générer le diagramme de Voronoi à partir d'une triangulation de Delaunay
+ * déjà réalisée avec `DelaunayBWGen
+ */
 public class VoronoiGenerator {
+    /**
+     * Sites de Voronoi
+     */
     List<VoronoiSite> points;
+    /**
+     * Liste des triangles adjacents à chaque site de Voronoi
+     */
     HashMap<VoronoiSite, ArrayList<DelaunayTriangle>> classifiedTriangles;
+    /**
+     * Polygones de Voronoi
+     */
     HashMap<VoronoiSite, ArrayList<Point>> polygons;
-    Point2D corner;
-    Point2D size;
+    /**
+     * Coin supérieur gauche de la carte
+     */
+    Point2D mapCorner;
+    /**
+     * Vecteur de taille de la carte
+     */
+    Point2D mapSize;
 
     public HashMap<VoronoiSite, ArrayList<Point>> getPolygons() {
         return polygons;
@@ -94,8 +113,8 @@ public class VoronoiGenerator {
 
     public VoronoiGenerator(VoronoiSite[] points, List<DelaunayTriangle> triangles, Point2D corner, Point2D size) {
         this.points = Arrays.asList(points);
-        this.corner = corner;
-        this.size = size;
+        this.mapCorner = corner;
+        this.mapSize = size;
 
         // Création de listes vides pour les triangles adjacents à chaque point
         classifiedTriangles = new HashMap<>();
