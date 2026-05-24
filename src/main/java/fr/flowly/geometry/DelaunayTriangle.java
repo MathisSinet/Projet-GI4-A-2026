@@ -4,24 +4,28 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Classe représentant un triangle de Delaunay
+ * Holds the representation of a Delaunay triangle
  */
 public class DelaunayTriangle {
+    /**
+     * Vertex of the triangle
+     */
     private final VoronoiSite p1, p2, p3;
     /**
-     * Centre du cercle circonscrit
+     * Center of the circumcircle
      */
     private final Point center;
     /**
-     * Rayon du cercle circonscrit
+     * Radius of the circumcircle
      */
     private final double radius;
 
     /**
-     * Génère un supertriangle à partir des points donnés.
-     * Utile pour générer la triangulation de Delaunay
+     * Generate a supertriangle based of given points.
+     * i.e. a triangle that contains all the given points
+     * This is useful to generate a Delaunay triangulation
      * @param points Points
-     * @return un supertriangle englobant tous les points
+     * @return a supertriangle containing all the points
      */
     public static DelaunayTriangle supertriangle(Point[] points) {
         final double EPSILON = 100;
@@ -42,26 +46,45 @@ public class DelaunayTriangle {
         );
     }
 
+    /**
+     * @return a vertex of the triangle
+     */
     public VoronoiSite getP1() {
         return p1;
     }
 
+    /**
+     * @return a vertex of the triangle
+     */
     public VoronoiSite getP2() {
         return p2;
     }
 
+    /**
+     * @return a vertex of the triangle
+     */
     public VoronoiSite getP3() {
         return p3;
     }
 
+    /**
+     * @return the center of the triangle's circumcircle
+     */
     public Point getCenter() {
         return center;
     }
 
+    /**
+     * @return the radius of the triangle's circumcircle
+     */
     public double getRadius() {
         return radius;
     }
 
+    /**
+     * Calculates the center of the triangle's circumcircle
+     * @return the center of the circumcircle
+     */
     private Point calculateCenter() {
         final Point vec1 = p2.subtract(p1);
         final Point vec2 = p3.subtract(p1);
@@ -76,6 +99,11 @@ public class DelaunayTriangle {
         return new Point(A * vec2.getY() - B * vec1.getY(), -A * vec2.getX() + B * vec1.getX());
     }
 
+    /**
+     * Tells if the triangle has the given edge
+     * @param edge edge
+     * @return true if the triangle has the given edge
+     */
     public boolean hasEdge(Edge<VoronoiSite> edge) {
         Point v1 = edge.getV1();
         Point v2 = edge.getV2();
@@ -86,6 +114,9 @@ public class DelaunayTriangle {
         );
     }
 
+    /**
+     * @return the triangle's edges
+     */
     public List<Edge<VoronoiSite>> getEdges() {
         return new ArrayList<>(List.of(
             new Edge<>(p1, p2),
@@ -94,12 +125,22 @@ public class DelaunayTriangle {
         ));
     }
 
+    /**
+     * Tells if two triangles share a vertex
+     * @param triangle triangle to compare to
+     * @return true if the two triangles share a vertex
+     */
     public boolean shareVertex(DelaunayTriangle triangle) {
         return p1.equals(triangle.getP1()) || p1.equals(triangle.getP2()) || p1.equals(triangle.getP3()) ||
             p2.equals(triangle.getP1()) || p2.equals(triangle.getP2()) || p2.equals(triangle.getP3()) ||
             p3.equals(triangle.getP1()) || p3.equals(triangle.getP2()) || p3.equals(triangle.getP3());
     }
 
+    /**
+     * Return the next vertex in CCW direction
+     * @param vertex current vertex
+     * @return next vertex
+     */
     public VoronoiSite nextVertex(VoronoiSite vertex) {
         if (vertex.equals(p1)) {
             return p2;
@@ -109,6 +150,12 @@ public class DelaunayTriangle {
         }
         return p1;
     }
+
+    /**
+     * Returns the previous vertex in CCW direction
+     * @param vertex current vertex
+     * @return previous vertex
+     */
     public VoronoiSite previousVertex(VoronoiSite vertex) {
         if (vertex.equals(p1)) {
             return p3;
@@ -119,6 +166,12 @@ public class DelaunayTriangle {
         return p1;
     }
 
+    /**
+     * Creates a new Delaunay triangle
+     * @param pt1 vertex 1
+     * @param pt2 vertex 2
+     * @param pt3 vertex 3
+     */
     public DelaunayTriangle(VoronoiSite pt1, VoronoiSite pt2, VoronoiSite pt3) {
         if (pt1.angle(pt2, pt3) < 180) {
             p1 = pt1;
@@ -154,10 +207,18 @@ public class DelaunayTriangle {
         return (p1.hashCode() >> 2) + (p2.hashCode() >> 2) + (p3.hashCode() >> 2);
     }
 
+    /**
+     * Returns the area of the triangle
+     * @return the area of the triangle
+     */
     public double getArea() {
     	return p1.area(p2, p3);
     }
     
+    /**
+     * Returns the length of the triangle's edges
+     * @return the length of the triangle's edges
+     */
     public double[] getEdgeLengths() {
     	return new double[] {
             p1.distance(p2),
