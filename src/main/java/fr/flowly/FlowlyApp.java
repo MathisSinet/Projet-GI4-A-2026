@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class FlowlyApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FlowlyApp.class.getResource("view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 874);
         stage.setTitle("Flowly");
         stage.setScene(scene);

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane prefHeight="874.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml"
-           fx:controller="fr.flowly.HelloController">
+           fx:controller="fr.flowly.MainController">
     
     <stylesheets>
         <URL value="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;display=swap" />
@@ -40,7 +40,7 @@
                               -fx-font-weight: bold; 
                               -fx-text-fill: rgba(255, 255, 255, 0.6);"/>
                 
-                <Button text="DISCOVER" onAction="#onHelloButtonClick"
+                <Button text="DISCOVER" onAction="#onViewButtonClick"
                         style="-fx-background-color: #b7f3cb80; 
                                -fx-text-fill: #2d3748; 
                                -fx-font-family: 'Poppins'; 
