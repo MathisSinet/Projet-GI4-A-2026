@@ -1,45 +1,43 @@
 package fr.flowly.geometry;
 
-// TODO Javadoc
-
 /**
- * Site de Voronoi
+ * Holds the representation of a Voronoi Site
  */
 public class VoronoiSite extends Point {
     /**
-     * Identifiant du site
+     * Unique identifier of the site
      */
     private int id;
     /**
-     * Nom du site
+     * Name of the site
      */
     private String name;
     /**
-     * Capacité maximale du site
+     * Maxmimum capacity of the site
      */
     private int maxCapacity;
     /**
-     * Cellule des environs du site
+     * Voronoi Cell corresponding to the site
      */
     private VoronoiCell cell;
 
     /**
-     * Crée un nouveau site de Voronoi vierge (solution technique uniquement)
-     * @param x
-     * @param y
+     * Creates a new Voronoi Site with only (x,y) coordinates
+     * @param x x coordinate of the site
+     * @param y y coordinate of the site
      */
     public VoronoiSite(double x, double y) {
         super(x, y);
     }
 
     /**
-     * Crée un nouveau site de Voronoi
-     * @param id Identifiant du site
-     * @param name Nom du site
-     * @param x Coordonnée x du site
-     * @param y Coordonnée y du site
-     * @param maxCapacity Capacité maximale du site
-     * @param cell Cellule du site
+     * Creates a new Voronoi Site
+     * @param id unique identifier of the site
+     * @param name name of the site
+     * @param x x coordinate of the site
+     * @param y y coordinate of the site
+     * @param maxCapacity maximum capacity of the site
+     * @param cell Voronoi cell of the site
      */
     public VoronoiSite(int id, String name, double x, double y, int maxCapacity, VoronoiCell cell) {
         super(x, y);
@@ -49,22 +47,50 @@ public class VoronoiSite extends Point {
         this.cell = cell;
     }
 
+    /**
+     * Returns the site's cell
+     * @return the site's cell
+     */
     public VoronoiCell getCell() {
         return cell;
     }
 
+    /**
+     * Updates the site's Voronoi cell
+     * @param cell new Voronoi cell
+     */
+    public void setCell(VoronoiCell cell) {
+        this.cell = cell;
+    }
+
+    /**
+     * Returns the site's unique identifier
+     * @return the site's unique identifier
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Returns the name of the site
+     * @return the name of the site
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the maximum capacity of the site
+     * @return the maximum capacity of the site
+     */
     public int getMaxCapacity() {
         return maxCapacity;
     }
 
+    /**
+     * Updates the maximum capacity of the site
+     * @param maxCapacity the new max capacity of the site
+     */
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
