@@ -173,7 +173,7 @@ public class DelaunayTriangle {
      * @param pt3 vertex 3
      */
     public DelaunayTriangle(VoronoiSite pt1, VoronoiSite pt2, VoronoiSite pt3) {
-        if (pt1.angle(pt2, pt3) < 180) {
+        if (pt1.angle2(pt2, pt3) < 180) {
             p1 = pt1;
             p2 = pt2;
             p3 = pt3;

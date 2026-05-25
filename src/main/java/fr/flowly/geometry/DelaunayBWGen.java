@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Generates a Delaunay triangulation
+ * Technical class to generate a Delaunay triangulation
  */
 public class DelaunayBWGen {
     private List<VoronoiSite> visited;

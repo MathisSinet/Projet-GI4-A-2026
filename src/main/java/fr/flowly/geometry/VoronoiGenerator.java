@@ -6,13 +6,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.HashMap;
 
-import javafx.geometry.Point2D;
-
 // TODO Translate comments once the class is finished
 
 /**
- * Classe technique utilisée pour générer le diagramme de Voronoi à partir d'une triangulation de Delaunay
- * déjà réalisée avec `DelaunayBWGen
+ * Technical class to generate a Voronoi diagram from a Delaunay triangulation
  */
 public class VoronoiGenerator {
     /**
@@ -30,23 +27,44 @@ public class VoronoiGenerator {
     /**
      * Coin supérieur gauche de la carte
      */
-    Point2D mapCorner;
+    Point mapCorner;
     /**
      * Vecteur de taille de la carte
      */
-    Point2D mapSize;
+    Point mapSize;
 
     public HashMap<VoronoiSite, ArrayList<Point>> getPolygons() {
         return polygons;
     }
 
+    private Point calculateEdgeIntercept(Point startPoint, Point vector) {
+        Point xIntercept, yIntercept;
+        if (vector.getX() < 0) {
+            // Intercept x = 0
+            xIntercept = startPoint.add(vector.multiply(-startPoint.getX() / vector.getX()));
+        }
+        else if (vector.getX() > 0) {
+            // Intercept x = WIDTH
+            xIntercept = startPoint.add(vector.multiply((mapSize.getX() - startPoint.getX()) / vector.getX()));
+        }
+        else {
+            xIntercept = null;
+        }
+
+        if (vector.getY() < 0) {
+            //
+        }
+
+        return null;
+    }
+
     /**
      * Génère le polygone de Voronoï d'un sommet donné
-     * @param point Sommet (germe)
+     * @param site Sommet (germe)
      * @param triangles Triangles adjacents à ce sommet
      * @return
      */
-    private ArrayList<Point> voronoiPolygon(VoronoiSite point, ArrayList<DelaunayTriangle> triangles) {
+    private ArrayList<Point> voronoiPolygon(VoronoiSite site, ArrayList<DelaunayTriangle> triangles) {
         int triangleCount = triangles.size();
         if (triangleCount == 0) return new ArrayList<>();
 
@@ -56,7 +74,7 @@ public class VoronoiGenerator {
         HashMap<VoronoiSite, DelaunayTriangle> triangleMap = new HashMap<>();
         // On remplit ces HashMap
         for (DelaunayTriangle triangle: triangles) {
-            VoronoiSite p1 = triangle.nextVertex(point);
+            VoronoiSite p1 = triangle.nextVertex(site);
             VoronoiSite p2 = triangle.nextVertex(p1);
             hasPredecessor.add(p2);
             triangleMap.put(p1, triangle);
@@ -74,7 +92,7 @@ public class VoronoiGenerator {
         ArrayList<Point> polygon = new ArrayList<>();
         // Cas 1 : cycle
         if (start == null) {
-            start = triangles.getFirst().nextVertex(point);
+            start = triangles.getFirst().nextVertex(site);
             VoronoiSite currentPoint = start;
             do {
                 DelaunayTriangle t1 = triangleMap.get(currentPoint);
@@ -91,8 +109,8 @@ public class VoronoiGenerator {
         else {
             // On génère un point très éloigné sur la médiatrice du premier segment reliant
             // le centre de la cellule au premier point de la chaine
-            Point firstMP = point.midpoint(start);
-            Point vec = start.subtract(point);
+            Point firstMP = site.midpoint(start);
+            Point vec = start.subtract(site);
             Point normal = new Point(vec.getY(), -vec.getX());
             Point farPoint = firstMP.add(normal.multiply(2000)); // Solution temporaire !!!
             polygon.add(farPoint);
@@ -113,15 +131,15 @@ public class VoronoiGenerator {
         return polygon;
     }
 
-    public VoronoiGenerator(VoronoiSite[] points, List<DelaunayTriangle> triangles, Point2D corner, Point2D size) {
-        this.points = Arrays.asList(points);
+    public VoronoiGenerator(VoronoiSite[] sites, List<DelaunayTriangle> triangles, Point corner, Point size) {
+        this.points = Arrays.asList(sites);
         this.mapCorner = corner;
         this.mapSize = size;
 
         // Création de listes vides pour les triangles adjacents à chaque point
         classifiedTriangles = new HashMap<>();
         polygons = new HashMap<>();
-        for (VoronoiSite point: points) {
+        for (VoronoiSite point: sites) {
             classifiedTriangles.put(point, new ArrayList<>());
         }
         // Classement des triangles dans les tableaux de chaque points
@@ -131,7 +149,7 @@ public class VoronoiGenerator {
             classifiedTriangles.get(triangle.getP3()).add(triangle);
         }
         // Génération des polygones de Voronoï
-        for (VoronoiSite point: points) {
+        for (VoronoiSite point: sites) {
             polygons.put(point, voronoiPolygon(point, classifiedTriangles.get(point)));
         }
     }

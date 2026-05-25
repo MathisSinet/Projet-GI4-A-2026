@@ -106,6 +106,24 @@ public class Point {
         return inner.angle(p2.inner, p3.inner);
     }
 
+
+    /**
+     * Computes the signed angle (in degrees) between the three points with this point
+     * as a vertex. Result between 0 and 360.
+     * @param p2 one point
+     * @param p3 other point
+     * @return angle between the vectors (this, p2) and (this, p3)
+     */
+    public double angle2(Point p2, Point p3) {
+        final Point va = p2.subtract(this);
+        final Point vb = p3.subtract(this);
+
+        final double a1 = Math.toDegrees(Math.atan2(va.getY(), va.getX())) + 180;
+        final double a2 = Math.toDegrees(Math.atan2(vb.getY(), vb.getX())) + 180;
+
+        return (a2 - a1 + 360) % 360;
+    }
+
     /**
      * Computes the distance between this point and the specified {@code point}.
      *
