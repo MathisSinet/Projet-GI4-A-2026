@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 import javafx.geometry.Point2D;
 
+// TODO Translate comments once the class is finished
+
 /**
  * Classe technique utilisée pour générer le diagramme de Voronoi à partir d'une triangulation de Delaunay
  * déjà réalisée avec `DelaunayBWGen

@@ -1,5 +1,7 @@
 package fr.flowly.geometry;
 
+// TODO Javadoc
+
 /**
  * Site de Voronoi
  */

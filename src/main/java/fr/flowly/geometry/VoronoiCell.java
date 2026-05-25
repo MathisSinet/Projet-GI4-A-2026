@@ -3,26 +3,26 @@ package fr.flowly.geometry;
 import java.util.List;
 
 /**
- * Représente une cellule de Voronoi
+ * Holds the representation of a Voronoi cell
  */
 public class VoronoiCell {
     /**
-     * Site principal de la cellule (utilisé uniquement pour calculer l'aire)
+     * Location of the main site of the cell
      */
     private Point mainSite;
     /**
-     * Sommets de la cellule
+     * Vertices of the cell
      */
     private List<Point> cellVertices;
     /**
-     * Valeur en cache de l'aire de la cellule
+     * Cached area of the cell
      */
     private Double areaCache = null;
 
     /**
-     * Crée une nouvelle cellule de Voronoi
-     * @param mainSite site de la cellule
-     * @param vertices sommets de la cellule
+     * Creates a new Voronoi cell
+     * @param mainSite location of the main site of the cell
+     * @param vertices vertices of the cell
      */
     public VoronoiCell(Point mainSite, List<Point> vertices) {
         this.mainSite = mainSite;
@@ -30,8 +30,8 @@ public class VoronoiCell {
     }
 
     /**
-     * Met à jour le centre de la cellule
-     * @param newSite nouveau centre de la cellule
+     * Updates the cell's main site
+     * @param newSite new location of the cell's main site
      */
     public void setMainSite(Point newSite) {
         mainSite = newSite;
@@ -39,16 +39,15 @@ public class VoronoiCell {
     }
 
     /**
-     * @return les sommets de la cellule
+     * @return vertices of the cell
      */
     public List<Point> getCellVertices() {
         return cellVertices;
     }
 
     /**
-     * Met à jour les sommets de la cellule.
-     * <p>Cette fonction consomme la liste `vertices`</p>
-     * @param vertices nouveaux sommets
+     * Updates the cell's vertices
+     * @param vertices new vertices
      */
     public void setCellVertices(List<Point> vertices) {
         this.cellVertices = vertices;
@@ -56,8 +55,8 @@ public class VoronoiCell {
     }
 
     /**
-     * Calcule l'aire de la cellule
-     * @return l'aire de la cellule
+     * Computes the area of the cell
+     * @return area of the cell
      */
     private double calculateArea() {
         int vertexCount = getCellVertices().size();
@@ -69,8 +68,8 @@ public class VoronoiCell {
     }
     
     /**
-     * Renvoie l'aire de la cellule
-     * @return l'aire de la cellule
+     * Returns the area of the cell
+     * @return area of the cell
      */
     public double getArea() { 
         if (areaCache == null) {
@@ -80,20 +79,20 @@ public class VoronoiCell {
     }
 
     /**
-     * Invalide l'aire de la cellule
-     * (par exemple si le diagramme a été modifié)
+     * Invalidates the cached area of the cell
      */
     private void invalidateArea() {
         areaCache = null;
     }
 
     /**
-     * Renvoie le nombre de touristes présents dans la cellule
-     * Cette fonction se base sur les valeurs de tourist.getClosestSite
-     * @param allTourists touristes
-     * @return nombre de touristes présents dans la cellule
+     * Returns the number of tourists inside the cell
+     * 
+     * This function uses {@code TouristPoint.getClosestSite}
+     * @param allTourists tourists
+     * @return number of tourists inside the cell
      */
-    public int getTouristCount(List<TouristPoint> allTourists) { //int
+    public int getTouristCount(List<TouristPoint> allTourists) {
         int count = 0;
         for (TouristPoint tourist: allTourists) {
             if (tourist.getClosestSite().getCell() == this) {
@@ -104,18 +103,18 @@ public class VoronoiCell {
     }
     
     /**
-     * Renvoie la densité de touristes dans la zone
-     * @param allTourists touristes
-     * @return densité de touristes dans la zone
+     * Returns the density of tourists inside the cell
+     * @param allTourists tourists
+     * @return density of tourists inside the cell
      */
     public double getDensity(List<TouristPoint> allTourists) {
     	return getTouristCount(allTourists) / getArea();
     }
     
     /**
-     * Renvoie des informations sur les distances des touristes au site principal
-     * @param allTourists
-     * @return [distance minimale, distance maximale, distance moyenne]
+     * Returns info about the distances between the tourists and the main site
+     * @param allTourists tourists
+     * @return [min distance, max distance, average distance]
      */
     public double[] getDistanceMetrics(List<TouristPoint> allTourists) {
     	int count = 0;
