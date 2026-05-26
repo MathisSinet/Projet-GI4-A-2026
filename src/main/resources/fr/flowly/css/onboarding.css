@@ -1,5 +1,4 @@
 .welcome-title {
-    -fx-font-family: inherit;   
     -fx-font-size: 25px;   
     -fx-font-weight: bold;   
     -fx-text-fill: rgba(255, 255, 255, 0.6);
@@ -8,8 +7,7 @@
 .discover-button {
     -fx-background-color: -fx-base;   
     -fx-text-fill: #2d3748;   
-    
-    -fx-font-family: inherit;   
+      
     -fx-font-size: 25px;   
     -fx-font-weight: bold;   
     -fx-background-radius: 35;   
