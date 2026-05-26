@@ -1,0 +1,7 @@
+.root {
+    /* Global policy */
+    -fx-font-family: 'Poppins';
+    
+    /* Global green color */
+    -fx-base: #b7f3cb80;
+}

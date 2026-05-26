@@ -1,0 +1,21 @@
+.welcome-title {
+    /* Il hérite de la police Poppins du global */
+    -fx-font-family: inherit;   
+    -fx-font-size: 25px;   
+    -fx-font-weight: bold;   
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+}
+
+.discover-button {
+    /* Il récupère automatiquement le vert du global */
+    -fx-background-color: -fx-base;   
+    -fx-text-fill: #2d3748;   
+    
+    /* Il hérite de la police Poppins du global */
+    -fx-font-family: inherit;   
+    -fx-font-size: 25px;   
+    -fx-font-weight: bold;   
+    -fx-background-radius: 35;   
+    -fx-padding: 10 90 10 90;   
+    -fx-cursor: hand;
+}
