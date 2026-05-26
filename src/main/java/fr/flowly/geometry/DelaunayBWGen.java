@@ -24,7 +24,7 @@ public class DelaunayBWGen {
      * Generates a Delaunay triangulation using the Bowyer-Watson algorithm
      * @param points sites to triangulate
      */
-    public DelaunayBWGen(VoronoiSite[] points) {
+    public DelaunayBWGen(List<VoronoiSite> points) {
         visited = new ArrayList<>();
         triangles = new ArrayList<>();
         supertriangle = DelaunayTriangle.supertriangle(points);

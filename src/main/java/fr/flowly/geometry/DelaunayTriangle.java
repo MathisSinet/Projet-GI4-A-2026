@@ -27,7 +27,7 @@ public class DelaunayTriangle {
      * @param points Points
      * @return a supertriangle containing all the points
      */
-    public static DelaunayTriangle supertriangle(Point[] points) {
+    public static DelaunayTriangle supertriangle(List<? extends Point> points) {
         final double EPSILON = 100;
         double xmin = Double.POSITIVE_INFINITY;
         double xmax = Double.NEGATIVE_INFINITY;

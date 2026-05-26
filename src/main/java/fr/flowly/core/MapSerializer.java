@@ -1,6 +1,7 @@
 package fr.flowly.core;
 
 import java.io.*;
+import fr.flowly.geometry.Point;
 
 public class MapSerializer {
 
@@ -13,8 +14,8 @@ public class MapSerializer {
         }
     }
 
-    public static MapManager importMapBinary(String path) {
-        MapManager manager = new MapManager();
+    public static MapManager importMapBinary(String path, Point mapCorner, Point mapSize) {
+        MapManager manager = new MapManager(mapCorner, mapSize);
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             System.out.println("succé du chargement de la carte depuis" + path);
         } catch (IOException  e) {

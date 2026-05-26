@@ -2,7 +2,6 @@ package fr.flowly.geometry;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.HashMap;
 
@@ -10,10 +9,6 @@ import java.util.HashMap;
  * Technical class to generate a Voronoi diagram from a Delaunay triangulation
  */
 public class VoronoiGenerator {
-    /**
-     * Voronoi sites
-     */
-    private final List<VoronoiSite> points;
     /**
      * List of triangles adjacent to each Voronoi site
      */
@@ -216,8 +211,7 @@ public class VoronoiGenerator {
      * @param corner Bottom-left corner of the map
      * @param size Size of the map
      */
-    public VoronoiGenerator(VoronoiSite[] sites, List<DelaunayTriangle> triangles, Point corner, Point size) {
-        this.points = Arrays.asList(sites);
+    public VoronoiGenerator(List<VoronoiSite> sites, List<DelaunayTriangle> triangles, Point corner, Point size) {
         this.mapCorner = corner;
         this.mapSize = size;
 

@@ -10,14 +10,32 @@ public class MapManager {
     private List<TouristPoint> tourists;
     private List<DelaunayTriangle> triangles;
 
-    public MapManager() {
+    private final Point corner;
+    private final Point size;
+
+    public Point getCorner() {
+        return corner;
+    }
+
+    public Point getSize() {
+        return size;
+    }
+
+    public MapManager(Point corner, Point size) {
         this.sites = new ArrayList<>();
         this.tourists = new ArrayList<>();
         this.triangles = new ArrayList<>();
+        this.corner = corner;
+        this.size = size;
     }
 
     public void calculateDelaunayAndVoronoi() {
-
+        DelaunayBWGen delaunayGenerator = new DelaunayBWGen(sites);
+        triangles = delaunayGenerator.getTriangles();
+        VoronoiGenerator voronoiGenerator = new VoronoiGenerator(sites, triangles, corner, size);
+        for (VoronoiSite site: sites) {
+            site.setCell(new VoronoiCell(site, voronoiGenerator.getPolygons().get(site)));
+        }
     }
 
     public void associateTouristsToSites() {
@@ -42,15 +60,13 @@ public class MapManager {
     }
 
     public void addRandomTourists(int quantity) {
-
         for (int i = 0; i < quantity; i++) {
-            double randomX = Math.random() * 800;
-            double randomY = Math.random() * 600;
+            double randomX = corner.getX() + Math.random() * size.getX();
+            double randomY = corner.getY() + Math.random() * size.getY();
             int nextId = tourists.size() + 1;
             tourists.add(new TouristPoint(nextId, randomX, randomY));
         }
         associateTouristsToSites(); 
-
     }
 
     public void addSite(VoronoiSite site) {
