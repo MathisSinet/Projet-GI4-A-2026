@@ -1,0 +1,92 @@
+
+.form-heading {
+    -fx-font-family: inherit;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f4f1ea;
+    -fx-padding: 0 0 5 0;
+}
+
+.login-input {
+    -fx-background-color: -fx-base; 
+    -fx-text-fill: -fx-text;
+    -fx-prompt-text-fill: -fx-text;
+    -fx-font-family: inherit;
+    -fx-font-size: 16px; 
+    -fx-font-weight: bold;
+ 
+    -fx-alignment: center;
+    -fx-background-radius: 35;
+    -fx-pref-height: 55px;
+    -fx-cursor: text;
+}
+
+.login-input:focused {
+    -fx-background-color: -fx-log;
+    -fx-border-color: transparent;
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f4f1ea;
+    -fx-font-family: inherit;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 10 0 0 0;
+}
+
+.link-button:hover {
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}
+
+.primary-button {
+    -fx-background-color: rgba(255, 255, 255, 0.25); 
+    -fx-text-fill: black;
+    -fx-font-family: inherit;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 35; 
+    -fx-pref-height: 55px; 
+    
+    -fx-min-width: 250; 
+    -fx-max-width: 250;
+    -fx-cursor: hand;
+}
+
+
+
+/* ==========================================
+   				REGISTER CHOICE
+   ========================================== */
+
+.segmented-bar {
+    -fx-background-color: rgba(255, 255, 255, 0.15); 
+    -fx-background-radius: 25; 
+    -fx-padding: 0;
+    -fx-min-width: 350; 
+    -fx-max-width: 350;
+}
+
+.segmented-button {
+    -fx-background-color: transparent; 
+    -fx-text-fill: #ffffff;
+    -fx-font-family: inherit;
+    -fx-font-size: 16px; 
+    -fx-font-weight: bold;
+    -fx-min-width: 175; /* 350px/2 */
+    -fx-max-width: 175;
+    -fx-min-height: 55;
+    -fx-cursor: hand;
+}
+
+.left-button {
+    -fx-background-radius: 25 0 0 25;
+}
+
+.right-button {
+    -fx-background-radius: 0 25 25 0;
+}
+
+.segmented-button:hover, .segmented-button:focused {
+    -fx-background-color: -fx-log;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane prefHeight="874.0" prefWidth="400.0" styleClass="splash-root" 
+           xmlns:fx="http://javafx.com/fxml" 
+           fx:controller="fr.flowly.MainController"> <stylesheets> 
+        <URL value="@css/global.css" />
+        <URL value="@css/splash.css" />
+    </stylesheets> 
+
+    <ImageView fx:id="logoView" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@logo.png" />
+        </image>
+    </ImageView>
+    
+</StackPane>

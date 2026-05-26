@@ -2,6 +2,8 @@
     /* Global policy */
     -fx-font-family: 'Poppins';
     
-    /* Global green color */
+    /* Global green colors */
     -fx-base: #b7f3cb80;
+	-fx-log: #96e2ae85;
+	-fx-text: #2d3748;
 }
