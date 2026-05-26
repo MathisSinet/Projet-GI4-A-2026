@@ -40,9 +40,9 @@ public class DelaunayTriangle {
             ymax = Math.max(ymax, point.getY());
         }
         return new DelaunayTriangle(
-            new VoronoiSite(xmin - (xmax - xmin), ymin - (ymax - ymin)),
-            new VoronoiSite(4*xmax - 3*xmin + 3*EPSILON, ymin - (ymax - ymin)),
-            new VoronoiSite(xmin - (xmax - xmin), 4*ymax - 3*ymin + 3*EPSILON)
+            new VoronoiSite(xmin - 50*(xmax - xmin), ymin - 50*(ymax - ymin)),
+            new VoronoiSite(99*xmax - 98*xmin + 3*EPSILON, ymin - 50*(ymax - ymin)),
+            new VoronoiSite(xmin - 50*(xmax - xmin), 99*ymax - 98*ymin + 3*EPSILON)
         );
     }
 
