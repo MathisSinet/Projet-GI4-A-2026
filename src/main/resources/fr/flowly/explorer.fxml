@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="874.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="fr.flowly.MainController">
+    
+    <stylesheets>
+        <URL value="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;display=swap" />
+        <URL value="@css/explore.css" />
+    </stylesheets>
+
+    <BorderPane style="-fx-background-color: #121212;">
+        <padding>
+            <Insets top="40.0" right="25.0" bottom="50.0" left="25.0"/>
+        </padding>
+
+        <top>
+            <VBox spacing="25.0" alignment="CENTER">
+                <TextField promptText="EXPLORER....." styleClass="login-input"/>
+                <Label text="FILTREZ VOS ENVIES" styleClass="filter-heading"/>
+            </VBox>
+        </top>
+
+        <center>
+		    <VBox spacing="20.0" alignment="TOP_LEFT">
+		        <padding>
+		            <Insets top="20.0"/>
+		        </padding>
+		
+		        <Label text="DENSITÉ DE LA FOULE" styleClass="filter-section-title"/>
+		        <HBox spacing="10.0" alignment="CENTER">
+		            <Button text="CALME" styleClass="btn-calme" prefWidth="110" prefHeight="45"/>
+		            <Button text="NORMAL" styleClass="btn-normal" prefWidth="110" prefHeight="45"/>
+		            <Button text="BONDÉ" styleClass="btn-bonde" prefWidth="110" prefHeight="45"/>
+		        </HBox>
+		
+		        <Label text="CENTRE D’INTÉRÊT" styleClass="filter-section-title"/>
+		        <HBox spacing="10.0" alignment="CENTER">
+		            <Button text="ARTISAN LOCAL" styleClass="btn-artisan" prefWidth="110" prefHeight="45"/>
+		            <Button text="PLAGE" styleClass="btn-plage" prefWidth="110" prefHeight="45"/>
+		            <Button text="MONUMENT" styleClass="btn-monument" prefWidth="110" prefHeight="45"/>
+		        </HBox>
+		
+		        <Label text="PRIX" styleClass="filter-section-title"/>
+		        <HBox spacing="0.0" alignment="CENTER">
+		            <Button text="PAYANT" styleClass="btn-payant" prefWidth="160" prefHeight="45"/>
+		            <Button text="GRATUIT" styleClass="btn-gratuit" prefWidth="160" prefHeight="45"/>
+		        </HBox>
+		
+		        <Label text="DISTANCE" styleClass="filter-section-title"/>
+		        <VBox spacing="5.0">
+		            <Slider min="50" max="500" value="200" styleClass="slider"/>
+		            <HBox alignment="CENTER" spacing="115.0">
+		                <Label text="50m" styleClass="distance-label"/>
+		                <Label text="200m" styleClass="distance-label"/>
+		                <Label text="500m" styleClass="distance-label"/>
+		            </HBox>
+		        </VBox>
+		    </VBox>
+		</center>
+
+        <bottom>
+            <VBox alignment="CENTER">
+                <Button text="CHOISISSEZ VOTRE CHEMIN" onAction="#onViewButtonClick" styleClass="action-button"/>
+            </VBox>
+        </bottom>
+    </BorderPane>
+</StackPane>
