@@ -28,7 +28,7 @@ public class FlowlyApp extends Application {
         pause.setOnFinished(event -> {
             try {
                 // Load the onboarding FXML file
-                FXMLLoader onboardingLoader = new FXMLLoader(FlowlyApp.class.getResource("onboarding.fxml"));
+                FXMLLoader onboardingLoader = new FXMLLoader(FlowlyApp.class.getResource("explorer.fxml"));
                 Parent onboardingRoot = onboardingLoader.load();
                 
                 // Replace the current scene root with the onboarding view

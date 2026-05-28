@@ -12,6 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToggleButton?>
+
 
 <StackPane prefHeight="874.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="fr.flowly.MainController">
@@ -41,22 +44,31 @@
 		
 		        <Label text="DENSITÉ DE LA FOULE" styleClass="filter-section-title"/>
 		        <HBox spacing="10.0" alignment="CENTER">
-		            <Button text="CALME" styleClass="btn-calme" prefWidth="110" prefHeight="45"/>
-		            <Button text="NORMAL" styleClass="btn-normal" prefWidth="110" prefHeight="45"/>
-		            <Button text="BONDÉ" styleClass="btn-bonde" prefWidth="110" prefHeight="45"/>
+		            <fx:define>
+		                <ToggleGroup fx:id="fouleGroup"/>
+		            </fx:define>
+		            <ToggleButton text="CALME" toggleGroup="$fouleGroup" styleClass="btn-calme" prefWidth="110" prefHeight="45"/>
+		            <ToggleButton text="NORMAL" toggleGroup="$fouleGroup" styleClass="btn-normal" prefWidth="110" prefHeight="45"/>
+		            <ToggleButton text="BONDÉ" toggleGroup="$fouleGroup" styleClass="btn-bonde" prefWidth="110" prefHeight="45"/>
 		        </HBox>
 		
 		        <Label text="CENTRE D’INTÉRÊT" styleClass="filter-section-title"/>
 		        <HBox spacing="10.0" alignment="CENTER">
-		            <Button text="ARTISAN LOCAL" styleClass="btn-artisan" prefWidth="110" prefHeight="45"/>
-		            <Button text="PLAGE" styleClass="btn-plage" prefWidth="110" prefHeight="45"/>
-		            <Button text="MONUMENT" styleClass="btn-monument" prefWidth="110" prefHeight="45"/>
+		            <fx:define>
+		                <ToggleGroup fx:id="interetGroup"/>
+		            </fx:define>
+		            <ToggleButton text="ARTISAN LOCAL" toggleGroup="$interetGroup" styleClass="btn-artisan" prefWidth="110" prefHeight="45"/>
+		            <ToggleButton text="PLAGE" toggleGroup="$interetGroup" styleClass="btn-plage" prefWidth="110" prefHeight="45"/>
+		            <ToggleButton text="MONUMENT" toggleGroup="$interetGroup" styleClass="btn-monument" prefWidth="110" prefHeight="45"/>
 		        </HBox>
 		
 		        <Label text="PRIX" styleClass="filter-section-title"/>
 		        <HBox spacing="0.0" alignment="CENTER">
-		            <Button text="PAYANT" styleClass="btn-payant" prefWidth="160" prefHeight="45"/>
-		            <Button text="GRATUIT" styleClass="btn-gratuit" prefWidth="160" prefHeight="45"/>
+		            <fx:define>
+		                <ToggleGroup fx:id="prixGroup"/>
+		            </fx:define>
+		            <ToggleButton text="PAYANT" toggleGroup="$prixGroup" styleClass="btn-payant" prefWidth="160" prefHeight="45"/>
+		            <ToggleButton text="GRATUIT" toggleGroup="$prixGroup" styleClass="btn-gratuit" prefWidth="160" prefHeight="45" selected="true"/>
 		        </HBox>
 		
 		        <Label text="DISTANCE" styleClass="filter-section-title"/>
@@ -75,6 +87,7 @@
             <VBox alignment="CENTER">
                 <Button text="CHOISISSEZ VOTRE CHEMIN" onAction="#onViewButtonClick" styleClass="action-button"/>
             </VBox>
+            
         </bottom>
     </BorderPane>
 </StackPane>
