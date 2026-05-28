@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+
+<StackPane prefHeight="874.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="fr.flowly.MainController">
+    
+    <stylesheets>
+        <URL value="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;display=swap" />
+        <URL value="@css/profil1.css" />
+    </stylesheets>
+
+    <BorderPane style="-fx-background-color: #121212;">
+        <padding>
+            <Insets top="40.0" right="25.0" bottom="20.0" left="25.0"/>
+        </padding>
+
+        <top>
+            <HBox spacing="15.0" alignment="CENTER_LEFT" style="-fx-padding: 0 0 30 0;">
+                
+				<TextField promptText="Nom de l'activité" styleClass="profile-input-main" HBox.hgrow="ALWAYS" prefHeight="55.0"/>
+			</HBox>
+        </top>
+
+        <center>
+            <VBox spacing="25.0" alignment="TOP_LEFT">
+                
+				<TextField promptText="Adresse" styleClass="profile-input-field" prefHeight="50.0"/>
+                <Label text="Paramètre" styleClass="profile-section-heading"/>
+
+                <VBox spacing="15.0">
+                    <Button text="Modifier le Mot de passe" styleClass="btn-profile-action" prefWidth="350.0" prefHeight="50.0"/>
+                    <Button text="Modifier Adresse" styleClass="btn-profile-action" prefWidth="350.0" prefHeight="50.0"/>
+                    <Button text="Modifier Catégorie" styleClass="btn-profile-action" prefWidth="350.0" prefHeight="50.0"/>
+                </VBox>
+
+                <VBox alignment="CENTER" style="-fx-padding: 40 0 0 0;" VBox.vgrow="ALWAYS">
+                    <Label text="PROFIL" styleClass="profile-footer-title"/>
+                </VBox>
+            </VBox>
+        </center>
+
+        <bottom>
+            <VBox alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                <HBox spacing="25.0" styleClass="nav-bar">
+                    <Button contentDisplay="TOP" text="Home" styleClass="nav-button"/>
+                    <Button contentDisplay="TOP" text="Explorer" styleClass="nav-button"/>
+                    <Button contentDisplay="TOP" text="Profil" styleClass="nav-button, nav-active"/>
+                </HBox>
+            </VBox>
+        </bottom>
+    </BorderPane>
+</StackPane>

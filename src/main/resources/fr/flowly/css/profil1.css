@@ -1,0 +1,97 @@
+.profile-section-heading {
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff ;
+    -fx-padding: 10 0 5 0;
+}
+
+.profile-footer-title {
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff ;
+    -fx-letter-spacing: 2px;
+}
+
+
+.profile-input-main {
+    -fx-background-color: #636363 ; 
+    -fx-text-fill: #ffffff ;
+    -fx-prompt-text-fill: #8e8e93 ; 
+    -fx-border-color: transparent ;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 15 0 15;
+}
+
+.profile-input-field {
+    -fx-background-color: #636363 ; 
+    -fx-text-fill: #ffffff ;
+    -fx-prompt-text-fill: #8e8e93 ;
+    -fx-border-color: transparent ;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 0 15 0 15;
+}
+
+
+.btn-profile-action {
+    -fx-background-color: #636363 ;
+    -fx-border-color: transparent ;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff ;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-padding: 0 20 0 20;
+    -fx-cursor: hand;
+}
+
+.btn-profile-action:hover {
+    -fx-background-color: #3d3d3d ; 
+}
+
+.btn-profile-action:focused {
+    -fx-background-color: #3d3d3d ;
+    -fx-border-color: #5ce1e6 ; 
+    -fx-text-fill: #5ce1e6 ;
+}
+
+
+
+.nav-bar {
+    -fx-background-color: #333333 ;
+    -fx-background-radius: 30;
+    -fx-min-height: 60px;
+    -fx-max-height: 60px;
+    -fx-min-width: 360px;
+    -fx-max-width: 360px;
+    -fx-alignment: center;
+}
+
+.nav-button {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #ffffff ;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 2 15 2 15;
+}
+
+.nav-bar:focused, .nav-button:focused {
+    -fx-border-color: transparent ;
+    -fx-background-color: transparent ;
+}
+
+.nav-active {
+    -fx-text-fill: #5ce1e6 ;
+}

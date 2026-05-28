@@ -87,6 +87,13 @@
             <VBox alignment="CENTER">
                 <Button text="CHOISISSEZ VOTRE CHEMIN" onAction="#onViewButtonClick" styleClass="action-button"/>
             </VBox>
+            <VBox alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                <HBox spacing="25.0" styleClass="nav-bar">
+                    <Button contentDisplay="TOP" text="Home" styleClass="nav-button"/>
+                    <Button contentDisplay="TOP" text="Explorer" styleClass="nav-button, nav-active"/>
+                    <Button contentDisplay="TOP" text="Profil" styleClass="nav-button"/>
+                </HBox>
+            </VBox>
             
         </bottom>
     </BorderPane>

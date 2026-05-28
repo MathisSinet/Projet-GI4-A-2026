@@ -217,4 +217,33 @@
 
 
 
+.nav-bar {
+    -fx-background-color: #333333 ;
+    -fx-background-radius: 30;
+    -fx-min-height: 60px;
+    -fx-max-height: 60px;
+    -fx-min-width: 360px;
+    -fx-max-width: 360px;
+    -fx-alignment: center;
+}
+
+.nav-button {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #ffffff ;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 2 15 2 15;
+}
+
+.nav-bar:focused, .nav-button:focused {
+    -fx-border-color: transparent ;
+    -fx-background-color: transparent ;
+}
+
+.nav-active {
+    -fx-text-fill: #5ce1e6 ;
+}
+
 

@@ -59,6 +59,13 @@
         </center>
 
         <bottom>
+        <VBox alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                <HBox spacing="25.0" styleClass="nav-bar">
+                    <Button contentDisplay="TOP" text="Home" styleClass="nav-button"/>
+                    <Button contentDisplay="TOP" text="Modifier" styleClass="nav-button, nav-active"/>
+                    <Button contentDisplay="TOP" text="Profile" styleClass="nav-button"/>
+                </HBox>
+            </VBox>
             
         </bottom>
     </BorderPane>
