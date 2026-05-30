@@ -1,0 +1,92 @@
+.user-input-main {
+    -fx-background-color: #2c2c2c;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #8e8e93;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 15 0 15;
+}
+
+ 
+.btn-section-header {
+    -fx-background-color: #556b5c ; 
+    -fx-border-color: transparent ;
+    -fx-background-radius: 8 8 0 0; 
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+
+.btn-section-item {
+    -fx-background-color: #3a3a3a; 
+    -fx-border-color: #2c2c2c;
+    -fx-border-width: 1 0 0 0;
+    -fx-text-fill: #cccccc;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 13px;
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 25; 
+    -fx-cursor: hand;
+}
+
+
+.accordion-section .btn-section-item:last-child {
+    -fx-background-radius: 0 0 8 8;
+}
+
+
+.btn-section-item:hover {
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-section-header:hover {
+    -fx-background-color: #617a69;
+}
+
+
+.user-footer-title {
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-letter-spacing: 2px;
+}
+
+
+
+.nav-bar {
+    -fx-background-color: #333333;
+    -fx-background-radius: 30;
+    -fx-min-height: 60px;
+    -fx-max-height: 60px;
+    -fx-min-width: 360px;
+    -fx-max-width: 360px;
+    -fx-alignment: center;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 2 15 2 15;
+}
+
+.nav-bar:focused, .nav-button:focused {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.nav-active {
+    -fx-text-fill: #5ce1e6;
+}
